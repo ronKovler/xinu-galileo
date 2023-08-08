@@ -18,7 +18,7 @@ syscall	semreset(
 
 	mask = disable();
 
-	if (count < 0 || isbadsem(sem) || semtab[sem].sstate==S_FREE) {
+	if (count < 0 || isbadsem(sem) || semtab[sem].sstate == S_FREE) {
 		restore(mask);
 		return SYSERR;
 	}

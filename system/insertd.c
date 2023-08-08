@@ -15,10 +15,12 @@ status	insertd(			/* Assumes interrupts disabled	*/
 	int32	next;			/* Runs through the delta list	*/
 	int32	prev;			/* Follows next through the list*/
 
+	/* Check args */
 	if (isbadqid(q) || isbadpid(pid)) {
 		return SYSERR;
 	}
 
+	/* Step through queue and decrement key until proper pos found*/
 	prev = queuehead(q);
 	next = queuetab[queuehead(q)].qnext;
 	while ((next != queuetail(q)) && (queuetab[next].qkey <= key)) {

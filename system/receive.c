@@ -3,7 +3,7 @@
 #include <xinu.h>
 
 /*------------------------------------------------------------------------
- *  receive  -  Wait for a message and return the message to the caller
+ *  receive  -  Wait (block) for a message and return the message to the caller
  *------------------------------------------------------------------------
  */
 umsg32	receive(void)

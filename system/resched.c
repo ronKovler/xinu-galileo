@@ -25,8 +25,10 @@ void	resched(void)		/* Assumes interrupts are disabled	*/
 	ptold = &proctab[currpid];
 
 	if (ptold->prstate == PR_CURR) {  /* Process remains eligible */
-		if (ptold->prprio > firstkey(readylist)) {
-			return;
+		/* (base) Xinu scheduling ALWAYS runs highest priority, therefore*/
+		/* do nothing if calling proc is still eligible and greatest prio */
+		if (ptold->prprio > firstkey(readylist)) { 
+			return;								  
 		}
 
 		/* Old process will no longer remain current */

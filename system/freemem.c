@@ -12,8 +12,8 @@ syscall	freemem(
 	)
 {
 	intmask	mask;			/* Saved interrupt mask		*/
-	struct	memblk	*next, *prev, *block;
-	uint32	top;
+	struct	memblk	*next, *prev, *block; /* Adjacent blocks and block to free */
+	uint32	top;			
 
 	mask = disable();
 	if ((nbytes == 0) || ((uint32) blkaddr < (uint32) minheap)

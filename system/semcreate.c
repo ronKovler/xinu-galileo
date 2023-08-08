@@ -17,7 +17,7 @@ sid32	semcreate(
 
 	mask = disable();
 
-	if (count < 0 || ((sem=newsem())==SYSERR)) {
+	if (count < 0 || ((sem=newsem()) == SYSERR)) {
 		restore(mask);
 		return SYSERR;
 	}

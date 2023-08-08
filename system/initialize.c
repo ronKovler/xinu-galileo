@@ -220,6 +220,8 @@ static	void	sysinit()
 
 	clkinit();
 
+	/* Initialize devices */
+
 	for (i = 0; i < NDEVS; i++) {
 		init(i);
 	}

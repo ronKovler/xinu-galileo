@@ -11,6 +11,7 @@ void	clkhandler(
 		)
 {
 
+	/* Check if this is not a Timer0 interrupt */
 	if(!(hpet->gis & HPET_GIS_T0)) {
 		return;
 	}

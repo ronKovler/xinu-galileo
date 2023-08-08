@@ -15,10 +15,12 @@ status	insert(
 	qid16	curr;			/* Runs through items in a queue*/
 	qid16	prev;			/* Holds previous node index	*/
 
+	/* Check arguments */
 	if (isbadqid(q) || isbadpid(pid)) {
 		return SYSERR;
 	}
 
+	/* Step through queue until proper position found */
 	curr = firstid(q);
 	while (queuetab[curr].qkey >= key) {
 		curr = queuetab[curr].qnext;

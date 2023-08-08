@@ -21,7 +21,7 @@ syscall	send(
 	}
 
 	prptr = &proctab[pid];
-	if (prptr->prhasmsg) {
+	if (prptr->prhasmsg) { /* Xinu doesn't support processes having >1 message (no queue)*/
 		restore(mask);
 		return SYSERR;
 	}

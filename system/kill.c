@@ -25,7 +25,7 @@ syscall	kill(
 		xdone();
 	}
 
-	send(prptr->prparent, pid);
+	send(prptr->prparent, pid); /* Pass dying PID to the parent process */
 	for (i=0; i<3; i++) {
 		close(prptr->prdesc[i]);
 	}

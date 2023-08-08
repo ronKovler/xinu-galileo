@@ -25,13 +25,13 @@ char  	*getmem(
 	curr = memlist.mnext;
 	while (curr != NULL) {			/* Search free list	*/
 
-		if (curr->mlength == nbytes) {	/* Block is exact match	*/
+		if (curr->mlength == nbytes) {	/* Block is exact match, remove it */
 			prev->mnext = curr->mnext;
 			memlist.mlength -= nbytes;
 			restore(mask);
 			return (char *)(curr);
 
-		} else if (curr->mlength > nbytes) { /* Split big block	*/
+		} else if (curr->mlength > nbytes) { /* Block is larger than requested, split it (& remove) */
 			leftover = (struct memblk *)((uint32) curr +
 					nbytes);
 			prev->mnext = leftover;
@@ -40,11 +40,12 @@ char  	*getmem(
 			memlist.mlength -= nbytes;
 			restore(mask);
 			return (char *)(curr);
-		} else {			/* Move to next block	*/
+		} else {			/* Move to next block */
 			prev = curr;
 			curr = curr->mnext;
 		}
 	}
+	/* Reached end of free mem list, no valid block found */
 	restore(mask);
 	return (char *)SYSERR;
 }

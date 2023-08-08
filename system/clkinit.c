@@ -30,8 +30,10 @@ void	clkinit(void)
         count1000 = 0;
 	/* Set interrupt vector for the clock to invoke clkdisp */
 
+	/* Map the interrupt request (IRQ) to the interrupt vector */
 	ioapic_irq2vec(2, IRQBASE);
 
+	/* Set the interrupt handler for clock interrupts */
 	set_ivec(IRQBASE, clkhandler, 0);
 
 	hpet->gc = 0;

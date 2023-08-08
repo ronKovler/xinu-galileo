@@ -26,6 +26,7 @@ pid32	create(
 	uint32		*saddr;		/* Stack address		*/
 
 	mask = disable();
+	/* Round up stack size to smallest size if needed */
 	if (ssize < MINSTK)
 		ssize = MINSTK;
 		
